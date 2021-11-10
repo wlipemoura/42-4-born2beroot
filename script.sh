@@ -2,7 +2,8 @@
 echo -n "#Architecture: " && uname -a
 
 #The number of physical processors. https://www.youtube.com/watch?v=tnh_UO9aZ94
-echo -n "#CPU physical: " && cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
+echo -n "#CPU physical: " &&
+cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
 
 #The number of virtual processors. https://webhostinggeeks.com/howto/how-to-display-the-number-of-processors-vcpu-on-linux-vps/
 echo -n "#vCPU: " &&  cat /proc/cpuinfo | grep "processor" | wc -l
