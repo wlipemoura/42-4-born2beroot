@@ -39,7 +39,11 @@ cat /proc/net/sockstat | grep "TCP:" | awk '{ print $'3'" ESTABLISHED" }'
 echo -n "#User log: " && ps -eaho user | sort -u | wc -l
 
 #The IPv4 address of your server and its MAC (Media Access Control) address.
-echo -n "#Network: " && 
+echo -n "#Network: IP " &&  
+echo -n "$(hostname -I)" && 
+ifconfig | awk '/ether/ { print "(" $2 ")"}'
 
 #The number of commands executed with the sudo program.
-echo -n "#Sudo: "
+echo -n "#Sudo: " &&
+grep -c ‘COMMAND’ /var/log/sudo/logfile
+&& echo "cmd"
